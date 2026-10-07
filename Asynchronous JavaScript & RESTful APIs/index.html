@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Weather Dashboard</title>
+  <style>
+    :root {
+      --primary: #2563eb;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #64748b;
+      --border: #e2e8f0;
+      --error: #ef4444;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: system-ui, -apple-system, sans-serif; background: var(--bg); color: var(--text); display: flex; justify-content: center; padding: 2rem 1rem; }
+    
+    .dashboard-container { background: var(--card-bg); width: 100%; max-width: 480px; padding: 1.5rem; border-radius: 12px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1); }
+    h1 { font-size: 1.5rem; margin-bottom: 1rem; text-align: center; }
+
+    .search-form { display: flex; gap: 0.5rem; margin-bottom: 1rem; }
+    .search-input { flex: 1; padding: 0.75rem; border: 1px solid var(--border); border-radius: 6px; font-size: 1rem; outline: none; }
+    .search-input:focus { border-color: var(--primary); }
+    
+    button { background: var(--primary); color: white; border: none; padding: 0.75rem 1rem; border-radius: 6px; cursor: pointer; font-weight: 600; }
+    button:hover { opacity: 0.9; }
+
+    .error-msg { color: var(--error); font-size: 0.9rem; margin-bottom: 1rem; display: none; text-align: center; }
+    .loading-spinner { text-align: center; color: var(--text-muted); display: none; margin: 1.5rem 0; }
+
+    .weather-card { display: none; text-align: center; border-top: 1px solid var(--border); padding-top: 1.5rem; margin-top: 1rem; }
+    .city-name { font-size: 1.4rem; font-weight: 700; margin-bottom: 0.25rem; }
+    .weather-desc { color: var(--text-muted); text-transform: capitalize; margin-bottom: 1rem; }
+    
+    .weather-main { display: flex; align-items: center; justify-content: center; gap: 0.5rem; margin-bottom: 1.5rem; }
+    .temp { font-size: 2.5rem; font-weight: 800; }
+    .weather-icon { width: 64px; height: 64px; }
+
+    .metrics-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; background: var(--bg); padding: 1rem; border-radius: 8px; }
+    .metric-item { display: flex; flex-direction: column; align-items: center; }
+    .metric-label { font-size: 0.8rem; color: var(--text-muted); margin-bottom: 0.25rem; text-transform: uppercase; letter-spacing: 0.05em; }
+    .metric-value { font-size: 1.1rem; font-weight: 600; }
+  </style>
+</head>
+<body>
+
+  <div class="dashboard-container">
+    <h1>Weather Dashboard</h1>
+    
+    <!-- Search Form -->
+    <form class="search-form" id="search-form">
+      <input type="text" class="search-input" id="city-input" placeholder="Enter city name..." required>
+      <button type="submit">Search</button>
+    </form>
+
+    <!-- Error & Loading States -->
+    <div class="error-msg" id="error-msg"></div>
+    <div class="loading-spinner" id="loading-spinner">Loading weather data...</div>
+
+    <!-- Weather Metrics Display -->
+    <div class="weather-card" id="weather-card">
+      <h2 class="city-name" id="city-name">--</h2>
+      <p class="weather-desc" id="weather-desc">--</p>
+      
+      <div class="weather-main">
+        <img class="weather-icon" id="weather-icon" src="" alt="Weather icon">
+        <span class="temp" id="temperature">--°C</span>
+      </div>
+
+      <div class="metrics-grid">
+        <div class="metric-item">
+          <span class="metric-label">Humidity</span>
+          <span class="metric-value" id="humidity">--%</span>
+        </div>
+        <div class="metric-item">
+          <span class="metric-label">Wind Speed</span>
+          <span class="metric-value" id="wind-speed">-- m/s</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
