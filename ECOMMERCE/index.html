@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aura Store - Modern Product Catalog</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <header class="navbar">
+    <div class="logo">AuraStore</div>
+    <nav class="nav-links">
+      <button class="nav-btn active" onclick="navigateTo('home')">Home</button>
+      <button class="nav-btn" onclick="navigateTo('catalog')">Catalog</button>
+    </nav>
+  </header>
+
+  <main class="container">
+    <!-- Home Page View -->
+    <section id="home-view" class="view">
+      <div class="hero">
+        <h1>Welcome to Aura Store</h1>
+        <p>Explore our modern collection of curated electronics, fashion, and accessories.</p>
+        <button class="btn" onclick="navigateTo('catalog')">Shop Catalog Now</button>
+      </div>
+    </section>
+
+    <!-- Catalog Page View -->
+    <section id="catalog-view" class="view hidden">
+      <div class="catalog-header">
+        <h2>Product Catalog</h2>
+        <input type="text" id="search-input" placeholder="Search products by title..." oninput="filterProducts()">
+      </div>
+      <div id="product-grid" class="product-grid"></div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2026 AuraStore Capstone Project. All rights reserved.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
