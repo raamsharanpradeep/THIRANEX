@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Responsive Developer Portfolio & Interactive Task Management App" />
+  <title>Developer Portfolio & Task App</title>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <header>
+    <nav aria-label="Main Navigation">
+      <a href="#home" class="logo">DevPortfolio</a>
+      <ul>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#tasks">Task Manager</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <button id="theme-toggle" aria-label="Toggle Dark/Light Mode">Theme</button>
+    </nav>
+  </header>
+
+  <main>
+    <!-- Task Manager Section -->
+    <section id="tasks" aria-labelledby="task-heading">
+      <h2 id="task-heading">Interactive Task Manager</h2>
+      
+      <form id="todo-form">
+        <label for="task-input">New Task:</label>
+        <input type="text" id="task-input" placeholder="Enter task name..." required />
+        <button type="submit">Add Task</button>
+      </form>
+
+      <div class="filter-controls">
+        <button data-filter="all" class="active">All</button>
+        <button data-filter="active">Active</button>
+        <button data-filter="completed">Completed</button>
+      </div>
+
+      <ul id="todo-list" aria-live="polite"></ul>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2026 Developer Portfolio. All rights reserved.</p>
+  </footer>
+
+  <script src="js/app.js"></script>
+</body>
+</html><!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>To-Do List Application</title>
+  <style>
+    :root {
+      --primary: #2563eb;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #64748b;
+      --border: #e2e8f0;
+      --danger: #ef4444;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: system-ui, -apple-system, sans-serif; background: var(--bg); color: var(--text); display: flex; justify-content: center; padding: 2rem 1rem; }
+    
+    .app-container { background: var(--card-bg); width: 100%; max-width: 500px; padding: 1.5rem; border-radius: 12px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1); }
+    h1 { font-size: 1.5rem; margin-bottom: 1rem; text-align: center; }
+
+    .todo-form { display: flex; gap: 0.5rem; margin-bottom: 1rem; }
+    .todo-input { flex: 1; padding: 0.75rem; border: 1px solid var(--border); border-radius: 6px; font-size: 1rem; outline: none; }
+    .todo-input:focus { border-color: var(--primary); }
+    
+    button { background: var(--primary); color: white; border: none; padding: 0.75rem 1rem; border-radius: 6px; cursor: pointer; font-weight: 600; }
+    button:hover { opacity: 0.9; }
+
+    .filter-group { display: flex; gap: 0.5rem; margin-bottom: 1rem; border-bottom: 1px solid var(--border); padding-bottom: 0.75rem; }
+    .filter-btn { background: transparent; color: var(--text-muted); padding: 0.4rem 0.8rem; border-radius: 4px; font-weight: 500; }
+    .filter-btn.active { background: var(--primary); color: white; }
+
+    .todo-list { list-style: none; }
+    .todo-item { display: flex; align-items: center; justify-content: space-between; padding: 0.75rem 0; border-bottom: 1px solid var(--border); gap: 0.5rem; }
+    .todo-item.completed .todo-text { text-decoration: line-through; color: var(--text-muted); }
+    
+    .todo-content { display: flex; align-items: center; gap: 0.75rem; flex: 1; }
+    .todo-checkbox { width: 1.2rem; height: 1.2rem; cursor: pointer; }
+    .todo-text { flex: 1; font-size: 1rem; }
+    .edit-input { flex: 1; padding: 0.4rem; font-size: 1rem; border: 1px solid var(--border); border-radius: 4px; }
+
+    .action-btn { background: none; border: none; padding: 0.25rem 0.5rem; cursor: pointer; font-size: 0.875rem; }
+    .edit-btn { color: var(--primary); }
+    .delete-btn { color: var(--danger); }
+  </style>
+</head>
+<body>
+
+  <div class="app-container">
+    <h1>To-Do List</h1>
+    
+    <!-- Task Creation Form -->
+    <form class="todo-form" id="todo-form">
+      <input type="text" class="todo-input" id="todo-input" placeholder="Add a new task..." required>
+      <button type="submit">Add Task</button>
+    </form>
+
+    <!-- Task Filtering -->
+    <div class="filter-group" id="filter-group">
+      <button type="button" class="filter-btn active" data-filter="all">All</button>
+      <button type="button" class="filter-btn" data-filter="active">Active</button>
+      <button type="button" class="filter-btn" data-filter="completed">Completed</button>
+    </div>
+
+    <!-- Task List Container -->
+    <ul class="todo-list" id="todo-list"></ul>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
